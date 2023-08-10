@@ -30,7 +30,7 @@ def get_tor_driver(geckodriver_path,tor_dir_path,headless=False):
     options.set_preference("torbrowser.settings.proxy.enabled", False)
     options.set_preference("torbrowser.settings.quickstart.enabled", True)
     options.binary_location = tor_dir_path+'\\Browser\\firefox.exe'
-    options.headless = headless
+    if headless: options.add_argument("-headless")
     service = Service(geckodriver_path)
     driver = webdriver.Firefox(options=options, service=service)
     time.sleep(1)
