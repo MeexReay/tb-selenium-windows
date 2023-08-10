@@ -48,4 +48,4 @@ if __name__ == "__main__":
     
     atexit.register(driver.quit) # quit tor at exit
     
-    driver.get("http://check.torproject.org")
+    driver.get("https://check.torproject.org")
