@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 import os
 import time
 
-def get_tor_driver(geckodriver_path,tor_dir_path):
+def get_tor_driver(geckodriver_path,tor_dir_path,headless=False):
     tor_dir_path = tor_dir_path.replace("/","\\")
     if tor_dir_path.endswith("\\"): tor_dir_path = tor_dir_path[:2]
     geckodriver_path = geckodriver_path.replace("/","\\")
@@ -30,6 +30,7 @@ def get_tor_driver(geckodriver_path,tor_dir_path):
     options.set_preference("torbrowser.settings.proxy.enabled", False)
     options.set_preference("torbrowser.settings.quickstart.enabled", True)
     options.binary_location = tor_dir_path+'\\Browser\\firefox.exe'
+    options.headless = headless
     service = Service(geckodriver_path)
     driver = webdriver.Firefox(options=options, service=service)
     time.sleep(1)
